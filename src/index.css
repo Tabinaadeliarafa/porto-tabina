@@ -45,13 +45,15 @@ All colors MUST be HSL.
     --radius: 1rem;
 
     /* Custom shadows for pop-up effect */
-    --shadow-soft: 0 10px 30px -10px hsl(0 64% 81% / 0.3);
-    --shadow-float: 0 15px 40px -12px hsl(0 64% 81% / 0.4);
-    --shadow-card: 0 8px 24px -4px hsl(0 0% 0% / 0.1);
+    --shadow-soft: 0 2px 20px rgba(0, 0, 0, 0.04);
+    --shadow-float: 0 12px 40px rgba(0, 0, 0, 0.08);
+    --shadow-card: 0 6px 30px rgba(0, 0, 0, 0.06);
+    --shadow-glow: 0 0 30px rgba(255, 164, 164, 0.15);
     
     /* Transitions */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-elastic: all 0.5s cubic-bezier(0.68, -0.25, 0.265, 1.25);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -127,11 +129,12 @@ All colors MUST be HSL.
   
   /* Floating hover effect */
   .hover-float {
-    transition: var(--transition-smooth);
+    transition: var(--transition-elastic);
   }
   
   .hover-float:hover {
-    transform: translateY(-8px);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-float);
   }
   
   /* Soft glow on hover */
@@ -140,7 +143,8 @@ All colors MUST be HSL.
   }
   
   .hover-glow:hover {
-    box-shadow: 0 0 20px hsl(var(--primary) / 0.4);
+    box-shadow: var(--shadow-glow);
+    transform: scale(1.05);
   }
   
   /* Scroll reveal animation */
