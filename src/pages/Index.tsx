@@ -106,17 +106,17 @@ const Index = () => {
             Tabina Adelia Rafa
           </h1>
 
-          <div className="h-12 md:h-16 flex items-center justify-center mb-8">
-            <p className="text-xl md:text-2xl font-medium text-muted-foreground">
+          <div className="h-12 md:h-16 flex items-center justify-center mb-12">
+            <p className="text-xl md:text-3xl font-medium text-muted-foreground">
               {typedText}
               <span className="animate-pulse">|</span>
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center popup-enter" style={{ animationDelay: "0.4s" }}>
+          <div className="flex flex-col sm:flex-row gap-5 justify-center items-center popup-enter" style={{ animationDelay: "0.4s" }}>
             <Button 
               size="lg" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 shadow-soft hover-glow"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-10 py-6 text-base shadow-soft hover-glow"
             >
               <Download className="w-5 h-5 mr-2" />
               Download CV
@@ -125,7 +125,7 @@ const Index = () => {
               size="lg"
               variant="outline"
               onClick={() => scrollToSection("contact")}
-              className="rounded-full px-8 border-2 hover:bg-primary/10"
+              className="rounded-full px-10 py-6 text-base border-2 hover:bg-primary/10"
             >
               <Mail className="w-5 h-5 mr-2" />
               Contact Me
@@ -157,14 +157,14 @@ const Index = () => {
       </section>
 
       {/* Organizational Experience Section */}
-      <section id="organizational" className="py-20 px-4">
+      <section id="organizational" className="py-24 px-4">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 scroll-reveal">
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-20 scroll-reveal">
             📘 Organizational Experience
           </h2>
 
-          <div className="space-y-8">
-            <Card className="p-6 md:p-8 rounded-2xl shadow-card hover-float scroll-reveal bg-white">
+          <div className="space-y-10">
+            <Card className="p-8 md:p-10 rounded-[2rem] shadow-card hover-float scroll-reveal bg-white border-0">
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                 <div>
                   <h3 className="text-xl md:text-2xl font-semibold mb-2">Staff of External Relations</h3>
@@ -184,7 +184,7 @@ const Index = () => {
               </ul>
             </Card>
 
-            <Card className="p-6 md:p-8 rounded-2xl shadow-card hover-float scroll-reveal bg-gradient-to-br from-pastel-pink/10 to-white">
+            <Card className="p-8 md:p-10 rounded-[2rem] shadow-card hover-float scroll-reveal bg-gradient-to-br from-pastel-pink/10 to-white border-0">
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                 <div>
                   <h3 className="text-xl md:text-2xl font-semibold mb-2">Head of Division Public Relations</h3>
@@ -203,7 +203,7 @@ const Index = () => {
               </ul>
             </Card>
 
-            <Card className="p-6 md:p-8 rounded-2xl shadow-card hover-float scroll-reveal bg-gradient-to-br from-pastel-mint/10 to-white">
+            <Card className="p-8 md:p-10 rounded-[2rem] shadow-card hover-float scroll-reveal bg-gradient-to-br from-pastel-mint/10 to-white border-0">
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                 <div>
                   <h3 className="text-xl md:text-2xl font-semibold mb-2">Project Supervisor</h3>
@@ -227,14 +227,14 @@ const Index = () => {
       </section>
 
       {/* Educational Experience Section */}
-      <section id="educational" className="py-20 px-4 bg-gradient-to-b from-transparent to-pastel-cream/30">
+      <section id="educational" className="py-24 px-4 bg-gradient-to-b from-transparent via-pastel-cream/20 to-white">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 scroll-reveal">
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-20 scroll-reveal">
             📗 Educational Experience
           </h2>
 
-          <div className="space-y-8">
-            <Card className="p-6 md:p-8 rounded-2xl shadow-card hover-float scroll-reveal bg-white">
+          <div className="space-y-10">
+            <Card className="p-8 md:p-10 rounded-[2rem] shadow-card hover-float scroll-reveal bg-white border-0">
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                 <div>
                   <h3 className="text-xl md:text-2xl font-semibold mb-2">Backend Developer - Internship</h3>
@@ -252,7 +252,7 @@ const Index = () => {
               </ul>
             </Card>
 
-            <Card className="p-6 md:p-8 rounded-2xl shadow-card hover-float scroll-reveal bg-gradient-to-br from-pastel-rose/10 to-white">
+            <Card className="p-8 md:p-10 rounded-[2rem] shadow-card hover-float scroll-reveal bg-gradient-to-br from-pastel-rose/10 to-white border-0">
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                 <div>
                   <h3 className="text-xl md:text-2xl font-semibold mb-2">UI/UX Designer - Project Based Internship</h3>
@@ -271,7 +271,7 @@ const Index = () => {
               </ul>
             </Card>
 
-            <Card className="p-6 md:p-8 rounded-2xl shadow-card hover-float scroll-reveal bg-gradient-to-br from-pastel-mint/10 to-white">
+            <Card className="p-8 md:p-10 rounded-[2rem] shadow-card hover-float scroll-reveal bg-gradient-to-br from-pastel-mint/10 to-white border-0">
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                 <div>
                   <h3 className="text-xl md:text-2xl font-semibold mb-2">Data Analytics - Mini Course</h3>
@@ -293,67 +293,168 @@ const Index = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 scroll-reveal">
+      <section id="projects" className="py-24 px-4 bg-gradient-to-b from-white via-pastel-cream/20 to-white">
+        <div className="container mx-auto max-w-7xl">
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-20 scroll-reveal">
             📙 Projects
           </h2>
 
-          <div className="grid md:grid-cols-1 gap-8">
-            <Card className="p-8 md:p-10 rounded-2xl shadow-float hover-float scroll-reveal bg-gradient-to-br from-white via-pastel-pink/5 to-pastel-mint/5">
-              <div className="flex flex-col lg:flex-row gap-8">
-                <div className="flex-1">
-                  <div className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">
-                    Backend Development
-                  </div>
-                  <h3 className="text-2xl md:text-3xl font-bold mb-4">Teraz Co-Living</h3>
-                  <p className="text-sm text-muted-foreground mb-4">Backend Developer – Laravel 12</p>
-                  
-                  <p className="text-foreground/80 mb-6 leading-relaxed">
-                    As backend developers using Laravel 12, including building scalable RESTful APIs, 
-                    structuring clean MVC components, and designing normalized PostgreSQL schemas. 
-                    Tasks include optimizing complex queries, managing database migrations, implementing 
-                    authentication and authorization (JWT/Session), creating middleware for request validation, 
-                    and developing service layers for business logic. Also involved in API versioning, 
-                    error handling, caching strategies, and integrating data analytics pipelines to process 
-                    occupancy and performance metrics.
-                  </p>
-
-                  <div className="flex flex-wrap gap-3">
-                    <Button 
-                      className="bg-foreground text-background hover:bg-foreground/90 rounded-full shadow-soft hover-glow"
-                      asChild
-                    >
-                      <a href="https://github.com/tabinaadeliarafa" target="_blank" rel="noopener noreferrer">
-                        <Github className="w-4 h-4 mr-2" />
-                        View GitHub Repository
-                      </a>
-                    </Button>
-                    <Button 
-                      variant="outline"
-                      className="rounded-full border-2"
-                    >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      View Project Demo
-                    </Button>
-                  </div>
+          <div className="grid md:grid-cols-2 gap-8 mb-8">
+            {/* Teraz Co-Living */}
+            <Card className="group p-8 rounded-[2rem] shadow-card hover-float scroll-reveal bg-gradient-to-br from-white to-pastel-pink/10 border-0 overflow-hidden relative">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-pastel-mint/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
+              <div className="relative z-10">
+                <div className="inline-flex items-center gap-2 bg-pastel-pink/20 text-pastel-pink px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                  <span className="w-2 h-2 bg-pastel-pink rounded-full animate-pulse" />
+                  Backend Development
                 </div>
+                <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Teraz Co-Living</h3>
+                <p className="text-sm text-muted-foreground mb-4 font-medium">Laravel 12 • PostgreSQL • RESTful API</p>
+                
+                <p className="text-foreground/70 mb-6 leading-relaxed line-clamp-4">
+                  Building scalable RESTful APIs, structuring clean MVC components, and designing normalized PostgreSQL schemas. 
+                  Implementing authentication (JWT/Session), middleware validation, and service layers for business logic.
+                </p>
 
-                <div className="lg:w-64 flex items-center justify-center">
-                  <div className="bg-gradient-to-br from-pastel-pink to-pastel-mint p-8 rounded-2xl shadow-card">
-                    <div className="text-6xl">🏢</div>
-                  </div>
+                <div className="flex flex-wrap gap-3">
+                  <Button 
+                    size="sm"
+                    className="bg-foreground text-background hover:bg-foreground/90 rounded-full shadow-soft hover-glow"
+                    asChild
+                  >
+                    <a href="https://github.com/tabinaadeliarafa" target="_blank" rel="noopener noreferrer">
+                      <Github className="w-4 h-4 mr-2" />
+                      GitHub
+                    </a>
+                  </Button>
+                  <Button 
+                    size="sm"
+                    variant="outline"
+                    className="rounded-full border-2"
+                  >
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Demo
+                  </Button>
+                </div>
+              </div>
+            </Card>
+
+            {/* RajaUang Landing Page */}
+            <Card className="group p-8 rounded-[2rem] shadow-card hover-float scroll-reveal bg-gradient-to-br from-white to-pastel-mint/10 border-0 overflow-hidden relative">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-pastel-rose/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
+              <div className="relative z-10">
+                <div className="inline-flex items-center gap-2 bg-pastel-mint/20 text-pastel-mint px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                  <span className="w-2 h-2 bg-pastel-mint rounded-full animate-pulse" />
+                  UI/UX Design
+                </div>
+                <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">LKSN RajaUang Redesign</h3>
+                <p className="text-sm text-muted-foreground mb-4 font-medium">September - November 2024</p>
+                
+                <p className="text-foreground/70 mb-6 leading-relaxed">
+                  Redesigned landing page for LKSN RajaUang application using Figma. 
+                  Created comprehensive design system, wireframes, and high-fidelity prototypes 
+                  to enhance user experience and visual appeal.
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="px-3 py-1 bg-background/50 rounded-full text-xs font-medium">Figma</span>
+                  <span className="px-3 py-1 bg-background/50 rounded-full text-xs font-medium">Design System</span>
+                  <span className="px-3 py-1 bg-background/50 rounded-full text-xs font-medium">Prototyping</span>
+                </div>
+              </div>
+            </Card>
+
+            {/* Huni Bersama Website */}
+            <Card className="group p-8 rounded-[2rem] shadow-card hover-float scroll-reveal bg-gradient-to-br from-white to-pastel-rose/10 border-0 overflow-hidden relative">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-pastel-pink/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
+              <div className="relative z-10">
+                <div className="inline-flex items-center gap-2 bg-pastel-rose/20 text-pastel-rose px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                  <span className="w-2 h-2 bg-pastel-rose rounded-full animate-pulse" />
+                  UI/UX Design
+                </div>
+                <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Perkumpulan Huni Bersama</h3>
+                <p className="text-sm text-muted-foreground mb-4 font-medium">August - September 2024</p>
+                
+                <p className="text-foreground/70 mb-6 leading-relaxed">
+                  Redesigned website for housing community platform. Focused on improving 
+                  user flow, accessibility, and creating intuitive navigation with modern aesthetics.
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1 bg-background/50 rounded-full text-xs font-medium">Web Design</span>
+                  <span className="px-3 py-1 bg-background/50 rounded-full text-xs font-medium">User Research</span>
+                  <span className="px-3 py-1 bg-background/50 rounded-full text-xs font-medium">Wireframing</span>
+                </div>
+              </div>
+            </Card>
+
+            {/* HIMAWEB Website */}
+            <Card className="group p-8 rounded-[2rem] shadow-card hover-float scroll-reveal bg-gradient-to-br from-white to-pastel-cream/30 border-0 overflow-hidden relative">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-pastel-mint/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
+              <div className="relative z-10">
+                <div className="inline-flex items-center gap-2 bg-pastel-cream/40 text-foreground px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                  <span className="w-2 h-2 bg-foreground rounded-full animate-pulse" />
+                  Web Development
+                </div>
+                <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">HIMAWEB Development</h3>
+                <p className="text-sm text-muted-foreground mb-4 font-medium">July 2024</p>
+                
+                <p className="text-foreground/70 mb-6 leading-relaxed">
+                  Developed full-stack website for Informatics Student Association. 
+                  Implemented responsive design, content management, and interactive features 
+                  to showcase organization activities and information.
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1 bg-background/50 rounded-full text-xs font-medium">Full Stack</span>
+                  <span className="px-3 py-1 bg-background/50 rounded-full text-xs font-medium">Responsive</span>
+                  <span className="px-3 py-1 bg-background/50 rounded-full text-xs font-medium">CMS</span>
                 </div>
               </div>
             </Card>
           </div>
+
+          {/* Rebound App - Full Width */}
+          <Card className="group p-10 rounded-[2rem] shadow-card hover-float scroll-reveal bg-gradient-to-br from-pastel-pink/5 via-white to-pastel-mint/5 border-0 overflow-hidden relative">
+            <div className="absolute -top-20 -right-20 w-64 h-64 bg-pastel-pink/20 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-700" />
+            <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-pastel-mint/20 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-700" />
+            <div className="relative z-10 flex flex-col lg:flex-row gap-8 items-center">
+              <div className="flex-1">
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-pastel-pink/20 to-pastel-mint/20 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                  <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                  Mobile App Development
+                </div>
+                <h3 className="text-3xl font-bold mb-3 group-hover:text-primary transition-colors">Rebound Application</h3>
+                <p className="text-sm text-muted-foreground mb-4 font-medium">November 2023 - January 2024</p>
+                
+                <p className="text-foreground/70 mb-6 leading-relaxed text-lg">
+                  Developed mobile application to help users track and improve their mental wellness. 
+                  Features include mood tracking, journaling, wellness tips, and progress analytics. 
+                  Built with modern mobile development practices focusing on UX and performance.
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <span className="px-4 py-2 bg-background/70 rounded-full text-sm font-medium">Mobile Dev</span>
+                  <span className="px-4 py-2 bg-background/70 rounded-full text-sm font-medium">UI/UX</span>
+                  <span className="px-4 py-2 bg-background/70 rounded-full text-sm font-medium">Wellness</span>
+                  <span className="px-4 py-2 bg-background/70 rounded-full text-sm font-medium">Analytics</span>
+                </div>
+              </div>
+              
+              <div className="lg:w-48 h-48 flex items-center justify-center">
+                <div className="bg-gradient-to-br from-pastel-pink via-pastel-rose to-pastel-mint p-12 rounded-[2rem] shadow-float transform group-hover:rotate-6 transition-transform duration-500">
+                  <div className="text-7xl">📱</div>
+                </div>
+              </div>
+            </div>
+          </Card>
         </div>
       </section>
 
       {/* Contact Footer */}
-      <footer id="contact" className="py-16 px-4 bg-gradient-to-t from-pastel-pink/20 to-transparent">
+      <footer id="contact" className="py-24 px-4 bg-gradient-to-t from-pastel-pink/20 via-pastel-cream/10 to-transparent">
         <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 scroll-reveal">
+          <h2 className="text-3xl md:text-5xl font-bold mb-12 scroll-reveal">
             📬 Let's Connect
           </h2>
           
@@ -364,29 +465,29 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center scroll-reveal">
             <a
               href="mailto:tabinaadeliarafa2004@gmail.com"
-              className="flex items-center gap-3 bg-white px-6 py-3 rounded-full shadow-card hover-float hover-glow transition-all"
+              className="flex items-center gap-3 bg-white px-8 py-4 rounded-full shadow-card hover-float hover-glow transition-all"
             >
               <Mail className="w-5 h-5 text-primary" />
               <span className="font-medium">tabinaadeliarafa2004@gmail.com</span>
             </a>
           </div>
 
-          <div className="flex gap-6 justify-center mt-8 scroll-reveal">
+          <div className="flex gap-6 justify-center mt-10 scroll-reveal">
             <a
               href="https://github.com/tabinaadeliarafa"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-card hover-float hover-glow transition-all"
+              className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-card hover-float hover-glow transition-all"
             >
-              <Github className="w-6 h-6" />
+              <Github className="w-7 h-7" />
             </a>
             <a
               href="https://www.linkedin.com/in/tabinaadeliarafa/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-card hover-float hover-glow transition-all"
+              className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-card hover-float hover-glow transition-all"
             >
-              <Linkedin className="w-6 h-6" />
+              <Linkedin className="w-7 h-7" />
             </a>
           </div>
 

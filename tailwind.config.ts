@@ -76,6 +76,7 @@ export default {
         soft: "var(--shadow-soft)",
         float: "var(--shadow-float)",
         card: "var(--shadow-card)",
+        glow: "var(--shadow-glow)",
       },
       keyframes: {
         "accordion-down": {
