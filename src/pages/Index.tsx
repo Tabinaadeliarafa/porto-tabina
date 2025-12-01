@@ -3,12 +3,22 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Github, Linkedin, Mail, Download, ExternalLink } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.jpg";
+import { Navbar } from "@/components/Navbar";
 
 const Index = () => {
   const [typedText, setTypedText] = useState("");
   const roles = ["UI/UX Designer", "Backend Developer", "Data Analyst"];
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+
+  const handleNavigate = (section: string) => {
+    setActiveSection(section);
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   // Typing animation effect
   useEffect(() => {
@@ -36,7 +46,7 @@ const Index = () => {
     return () => clearTimeout(timeout);
   }, [typedText, isDeleting, currentRoleIndex]);
 
-  // Scroll reveal effect
+  // Scroll reveal effect and active section tracking
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
@@ -47,11 +57,17 @@ const Index = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("revealed");
+          
+          // Update active section based on what's in view
+          const id = entry.target.id;
+          if (id && ["home", "organizational", "educational", "projects", "contact"].includes(id)) {
+            setActiveSection(id);
+          }
         }
       });
     }, observerOptions);
 
-    document.querySelectorAll(".scroll-reveal").forEach((el) => {
+    document.querySelectorAll(".scroll-reveal, section[id]").forEach((el) => {
       observer.observe(el);
     });
 
@@ -64,9 +80,12 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
+    <>
+      <Navbar onNavigate={handleNavigate} activeSection={activeSection} />
+      
+      <div className="min-h-screen lg:ml-24">
+        {/* Hero Section */}
+        <section id="home" className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-pastel-pink/20 via-pastel-cream to-pastel-mint/20" />
         
         <div className="relative z-10 text-center max-w-4xl mx-auto">
@@ -376,7 +395,8 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
+      </div>
+    </>
   );
 };
 
