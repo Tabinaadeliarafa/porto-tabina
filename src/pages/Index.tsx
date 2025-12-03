@@ -1,9 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Github, Linkedin, Mail, Download, ExternalLink } from "lucide-react";
+import { Github, Linkedin, Mail, Download, ExternalLink, Code, Palette, Database, BarChart3, Figma, Globe } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.jpg";
 import { Navbar } from "@/components/Navbar";
+
+const skills = [
+  { name: "Laravel", icon: Code, color: "from-pastel-pink to-pastel-rose" },
+  { name: "PostgreSQL", icon: Database, color: "from-pastel-mint to-pastel-cream" },
+  { name: "MySQL", icon: Database, color: "from-pastel-rose to-pastel-pink" },
+  { name: "JavaScript", icon: Code, color: "from-pastel-cream to-pastel-mint" },
+  { name: "Figma", icon: Figma, color: "from-pastel-pink to-pastel-mint" },
+  { name: "Python", icon: Code, color: "from-pastel-mint to-pastel-rose" },
+  { name: "Data Analysis", icon: BarChart3, color: "from-pastel-rose to-pastel-cream" },
+  { name: "UI/UX Design", icon: Palette, color: "from-pastel-cream to-pastel-pink" },
+  { name: "RESTful API", icon: Globe, color: "from-pastel-mint to-pastel-pink" },
+];
 
 const Index = () => {
   const [typedText, setTypedText] = useState("");
@@ -46,11 +58,11 @@ const Index = () => {
     return () => clearTimeout(timeout);
   }, [typedText, isDeleting, currentRoleIndex]);
 
-  // Scroll reveal effect and active section tracking
+  // Enhanced scroll reveal with stagger support
   useEffect(() => {
     const observerOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -100px 0px",
+      threshold: 0.15,
+      rootMargin: "-50px 0px -50px 0px",
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -58,16 +70,15 @@ const Index = () => {
         if (entry.isIntersecting) {
           entry.target.classList.add("revealed");
           
-          // Update active section based on what's in view
           const id = entry.target.id;
-          if (id && ["home", "organizational", "educational", "projects", "contact"].includes(id)) {
+          if (id && ["home", "skills", "organizational", "educational", "projects", "contact"].includes(id)) {
             setActiveSection(id);
           }
         }
       });
     }, observerOptions);
 
-    document.querySelectorAll(".scroll-reveal, section[id]").forEach((el) => {
+    document.querySelectorAll(".scroll-reveal, .scroll-reveal-stagger, .slide-in-left, .slide-in-right, section[id]").forEach((el) => {
       observer.observe(el);
     });
 
@@ -134,21 +145,51 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Skills Section */}
+      <section id="skills" className="py-20 px-4 bg-gradient-to-b from-transparent via-white/50 to-transparent">
+        <div className="container mx-auto max-w-5xl">
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 scroll-reveal">
+            ✨ My Skills
+          </h2>
+          <p className="text-center text-muted-foreground mb-12 scroll-reveal">Technologies & tools I work with</p>
+          
+          <div className="flex flex-wrap justify-center gap-4 scroll-reveal-stagger">
+            {skills.map((skill, index) => (
+              <div
+                key={skill.name}
+                className={`skill-badge group flex items-center gap-3 px-6 py-4 bg-gradient-to-br ${skill.color} rounded-2xl shadow-card cursor-default`}
+              >
+                <div className="w-10 h-10 bg-white/80 rounded-xl flex items-center justify-center shadow-soft group-hover:scale-110 transition-transform">
+                  <skill.icon className="w-5 h-5 text-foreground" />
+                </div>
+                <span className="font-semibold text-foreground">{skill.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Navigation Tabs */}
-      <section className="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
+      <section className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl shadow-soft border-b border-border/50">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-2 md:gap-4 py-4">
             {[
-              { id: "organizational", label: "Organizational Experience" },
-              { id: "educational", label: "Educational Experience" },
-              { id: "projects", label: "Projects" },
+              { id: "skills", label: "Skills", emoji: "✨" },
+              { id: "organizational", label: "Organization", emoji: "📘" },
+              { id: "educational", label: "Education", emoji: "📗" },
+              { id: "projects", label: "Projects", emoji: "📙" },
             ].map((tab) => (
               <Button
                 key={tab.id}
-                variant="ghost"
+                variant={activeSection === tab.id ? "default" : "ghost"}
                 onClick={() => scrollToSection(tab.id)}
-                className="rounded-full hover:bg-primary/20 hover:text-primary-foreground font-medium"
+                className={`rounded-full font-medium transition-all duration-300 ${
+                  activeSection === tab.id 
+                    ? "bg-primary text-primary-foreground shadow-soft scale-105" 
+                    : "hover:bg-primary/20"
+                }`}
               >
+                <span className="mr-2">{tab.emoji}</span>
                 {tab.label}
               </Button>
             ))}
@@ -157,149 +198,171 @@ const Index = () => {
       </section>
 
       {/* Organizational Experience Section */}
-      <section id="organizational" className="py-24 px-4">
+      <section id="organizational" className="py-24 px-4 overflow-hidden">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-20 scroll-reveal">
-            📘 Organizational Experience
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-6 scroll-reveal section-title">
+            Organizational Experience
           </h2>
+          <p className="text-center text-muted-foreground mb-16 scroll-reveal">Leadership & teamwork journey</p>
 
           <div className="space-y-10">
-            <Card className="p-8 md:p-10 rounded-[2rem] shadow-card hover-float scroll-reveal bg-white border-0">
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
-                <div>
-                  <h3 className="text-xl md:text-2xl font-semibold mb-2">Staff of External Relations</h3>
-                  <p className="text-primary font-medium">Informatics Engineering Student Association (HIMATIF)</p>
-                  <p className="text-sm text-muted-foreground">Jatinangor, Sumedang</p>
+            <Card className="p-8 md:p-10 rounded-[2rem] shadow-card hover-float slide-in-left bg-white border-0 relative overflow-hidden">
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-pastel-pink/20 rounded-full blur-3xl" />
+              <div className="relative z-10">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                  <div>
+                    <span className="inline-block px-4 py-1 bg-pastel-pink/30 rounded-full text-sm font-medium mb-3">Leadership</span>
+                    <h3 className="text-xl md:text-2xl font-semibold mb-2">Staff of External Relations</h3>
+                    <p className="text-primary font-medium">Informatics Engineering Student Association (HIMATIF)</p>
+                    <p className="text-sm text-muted-foreground">Jatinangor, Sumedang</p>
+                  </div>
+                  <div className="text-sm md:text-right text-muted-foreground bg-pastel-cream/50 px-4 py-2 rounded-full">
+                    Feb 2023 – Dec 2024
+                  </div>
                 </div>
-                <div className="text-sm md:text-right text-muted-foreground">
-                  February 2023 – December 2024
-                </div>
+                <ul className="space-y-2 text-foreground/80">
+                  <li className="flex items-start gap-2"><span className="text-primary">•</span> Managed and maintained HIMATIF's social media and external website</li>
+                  <li className="flex items-start gap-2"><span className="text-primary">•</span> Handled communication and inquiries from external parties</li>
+                  <li className="flex items-start gap-2"><span className="text-primary">•</span> Built and maintained partnerships with media and external organizations</li>
+                  <li className="flex items-start gap-2"><span className="text-primary">•</span> Led the execution of IFest Unpad to enhance HIMATIF's visibility</li>
+                </ul>
               </div>
-              <ul className="space-y-2 text-foreground/80">
-                <li>• Managed and maintained HIMATIF's social media and external website</li>
-                <li>• Handled communication and inquiries from external parties</li>
-                <li>• Built and maintained partnerships with media and external organizations</li>
-                <li>• Led the execution of IFest Unpad to enhance HIMATIF's visibility</li>
-                <li>• Supervised Project Officers with direction and support</li>
-              </ul>
             </Card>
 
-            <Card className="p-8 md:p-10 rounded-[2rem] shadow-card hover-float scroll-reveal bg-gradient-to-br from-pastel-pink/10 to-white border-0">
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
-                <div>
-                  <h3 className="text-xl md:text-2xl font-semibold mb-2">Head of Division Public Relations</h3>
-                  <p className="text-primary font-medium">Informatics Festival (IFEST)</p>
-                  <p className="text-sm text-muted-foreground">Jatinangor, Sumedang</p>
+            <Card className="p-8 md:p-10 rounded-[2rem] shadow-card hover-float slide-in-right bg-gradient-to-br from-pastel-mint/10 to-white border-0 relative overflow-hidden">
+              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-pastel-mint/20 rounded-full blur-3xl" />
+              <div className="relative z-10">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                  <div>
+                    <span className="inline-block px-4 py-1 bg-pastel-mint/30 rounded-full text-sm font-medium mb-3">Public Relations</span>
+                    <h3 className="text-xl md:text-2xl font-semibold mb-2">Head of Division Public Relations</h3>
+                    <p className="text-primary font-medium">Informatics Festival (IFEST)</p>
+                    <p className="text-sm text-muted-foreground">Jatinangor, Sumedang</p>
+                  </div>
+                  <div className="text-sm md:text-right text-muted-foreground bg-pastel-cream/50 px-4 py-2 rounded-full">
+                    Jun 2023 - Oct 2023
+                  </div>
                 </div>
-                <div className="text-sm md:text-right text-muted-foreground">
-                  June 2023 - October 2023
-                </div>
+                <ul className="space-y-2 text-foreground/80">
+                  <li className="flex items-start gap-2"><span className="text-secondary">•</span> Built and maintained strong relationships with external stakeholders</li>
+                  <li className="flex items-start gap-2"><span className="text-secondary">•</span> Coordinated partnerships with media and sponsors for event success</li>
+                  <li className="flex items-start gap-2"><span className="text-secondary">•</span> Developed communication strategies to enhance public image</li>
+                </ul>
               </div>
-              <ul className="space-y-2 text-foreground/80">
-                <li>• Built and maintained strong relationships with external stakeholders</li>
-                <li>• Coordinated partnerships with media and sponsors for event success</li>
-                <li>• Developed communication strategies to enhance public image</li>
-                <li>• Ensured consistent branding and positive representation of IFEST</li>
-              </ul>
             </Card>
 
-            <Card className="p-8 md:p-10 rounded-[2rem] shadow-card hover-float scroll-reveal bg-gradient-to-br from-pastel-mint/10 to-white border-0">
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
-                <div>
-                  <h3 className="text-xl md:text-2xl font-semibold mb-2">Project Supervisor</h3>
-                  <p className="text-primary font-medium">Informatics Festival (IFEST) 2024</p>
-                  <p className="text-sm text-muted-foreground">Jatinangor, Sumedang</p>
+            <Card className="p-8 md:p-10 rounded-[2rem] shadow-card hover-float slide-in-left bg-gradient-to-br from-pastel-rose/10 to-white border-0 relative overflow-hidden">
+              <div className="absolute -top-10 -left-10 w-40 h-40 bg-pastel-rose/20 rounded-full blur-3xl" />
+              <div className="relative z-10">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                  <div>
+                    <span className="inline-block px-4 py-1 bg-pastel-rose/30 rounded-full text-sm font-medium mb-3">Project Management</span>
+                    <h3 className="text-xl md:text-2xl font-semibold mb-2">Project Supervisor</h3>
+                    <p className="text-primary font-medium">Informatics Festival (IFEST) 2024</p>
+                    <p className="text-sm text-muted-foreground">Jatinangor, Sumedang</p>
+                  </div>
+                  <div className="text-sm md:text-right text-muted-foreground bg-pastel-cream/50 px-4 py-2 rounded-full">
+                    Jun 2024 - Oct 2024
+                  </div>
                 </div>
-                <div className="text-sm md:text-right text-muted-foreground">
-                  June 2024 - October 2024
-                </div>
+                <ul className="space-y-2 text-foreground/80">
+                  <li className="flex items-start gap-2"><span className="text-accent">•</span> Led overall planning and execution of tech event with 500+ participants</li>
+                  <li className="flex items-start gap-2"><span className="text-accent">•</span> Secured partnerships with 20+ companies and coordinated 12 expert speakers</li>
+                  <li className="flex items-start gap-2"><span className="text-accent">•</span> Oversaw social media strategy: 685K+ Instagram Reels views, 1.9M+ TikTok views</li>
+                </ul>
               </div>
-              <ul className="space-y-2 text-foreground/80">
-                <li>• Led overall planning and execution of tech event with 500+ participants</li>
-                <li>• Managed timeline, budgeting, and ensured project efficiency</li>
-                <li>• Secured partnerships with 20+ companies and coordinated 12 expert speakers</li>
-                <li>• Oversaw social media strategy: 685K+ Instagram Reels views, 1.9M+ TikTok views</li>
-                <li>• Fostered cross-functional collaboration for event success</li>
-              </ul>
             </Card>
           </div>
         </div>
       </section>
 
       {/* Educational Experience Section */}
-      <section id="educational" className="py-24 px-4 bg-gradient-to-b from-transparent via-pastel-cream/20 to-white">
+      <section id="educational" className="py-24 px-4 bg-gradient-to-b from-transparent via-pastel-cream/30 to-transparent overflow-hidden">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-20 scroll-reveal">
-            📗 Educational Experience
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-6 scroll-reveal section-title">
+            Educational Experience
           </h2>
+          <p className="text-center text-muted-foreground mb-16 scroll-reveal">Continuous learning & growth</p>
 
           <div className="space-y-10">
-            <Card className="p-8 md:p-10 rounded-[2rem] shadow-card hover-float scroll-reveal bg-white border-0">
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
-                <div>
-                  <h3 className="text-xl md:text-2xl font-semibold mb-2">Backend Developer - Internship</h3>
-                  <p className="text-primary font-medium">Bandung Polytechnic of Textile</p>
-                  <p className="text-sm text-muted-foreground">Laboratory Inventory Management System</p>
+            <Card className="p-8 md:p-10 rounded-[2rem] shadow-card hover-float slide-in-right bg-white border-0 relative overflow-hidden">
+              <div className="absolute -top-10 -left-10 w-40 h-40 bg-pastel-mint/20 rounded-full blur-3xl" />
+              <div className="relative z-10">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                  <div>
+                    <span className="inline-block px-4 py-1 bg-pastel-mint/30 rounded-full text-sm font-medium mb-3">💻 Internship</span>
+                    <h3 className="text-xl md:text-2xl font-semibold mb-2">Backend Developer</h3>
+                    <p className="text-primary font-medium">Bandung Polytechnic of Textile</p>
+                    <p className="text-sm text-muted-foreground">Laboratory Inventory Management System</p>
+                  </div>
+                  <div className="text-sm md:text-right text-muted-foreground bg-pastel-mint/20 px-4 py-2 rounded-full">
+                    Sep - Nov 2025
+                  </div>
                 </div>
-                <div className="text-sm md:text-right text-muted-foreground">
-                  September 2025 - November 2025
-                </div>
+                <ul className="space-y-2 text-foreground/80">
+                  <li className="flex items-start gap-2"><span className="text-secondary">•</span> Developed backend logic, database design, and RESTful APIs using Laravel and MySQL</li>
+                  <li className="flex items-start gap-2"><span className="text-secondary">•</span> Collaborated with frontend developers for smooth API integration</li>
+                  <li className="flex items-start gap-2"><span className="text-secondary">•</span> Ensured system security and optimized performance</li>
+                </ul>
               </div>
-              <ul className="space-y-2 text-foreground/80">
-                <li>• Developed backend logic, database design, and RESTful APIs using Laravel and MySQL</li>
-                <li>• Collaborated with frontend developers for smooth API integration</li>
-                <li>• Ensured system security and optimized performance</li>
-              </ul>
             </Card>
 
-            <Card className="p-8 md:p-10 rounded-[2rem] shadow-card hover-float scroll-reveal bg-gradient-to-br from-pastel-rose/10 to-white border-0">
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
-                <div>
-                  <h3 className="text-xl md:text-2xl font-semibold mb-2">UI/UX Designer - Project Based Internship</h3>
-                  <p className="text-primary font-medium">FundEx x Rakamin Academy</p>
-                  <p className="text-sm text-muted-foreground">Mobile Landing Page Redesign</p>
+            <Card className="p-8 md:p-10 rounded-[2rem] shadow-card hover-float slide-in-left bg-gradient-to-br from-pastel-rose/10 to-white border-0 relative overflow-hidden">
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-pastel-rose/20 rounded-full blur-3xl" />
+              <div className="relative z-10">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                  <div>
+                    <span className="inline-block px-4 py-1 bg-pastel-rose/30 rounded-full text-sm font-medium mb-3">🎨 Internship</span>
+                    <h3 className="text-xl md:text-2xl font-semibold mb-2">UI/UX Designer</h3>
+                    <p className="text-primary font-medium">FundEx x Rakamin Academy</p>
+                    <p className="text-sm text-muted-foreground">Mobile Landing Page Redesign</p>
+                  </div>
+                  <div className="text-sm md:text-right text-muted-foreground bg-pastel-rose/20 px-4 py-2 rounded-full">
+                    July 2025
+                  </div>
                 </div>
-                <div className="text-sm md:text-right text-muted-foreground">
-                  July 2025
-                </div>
+                <ul className="space-y-2 text-foreground/80">
+                  <li className="flex items-start gap-2"><span className="text-accent">•</span> Redesigned FundEx.id mobile landing page using Design Sprint framework</li>
+                  <li className="flex items-start gap-2"><span className="text-accent">•</span> Created moodboards, wireframes, mini design system, and prototypes in Figma</li>
+                  <li className="flex items-start gap-2"><span className="text-accent">•</span> Enhanced UI/UX with improved information clarity and visual readability</li>
+                </ul>
               </div>
-              <ul className="space-y-2 text-foreground/80">
-                <li>• Redesigned FundEx.id mobile landing page using Design Sprint framework</li>
-                <li>• Created moodboards, wireframes, mini design system, and prototypes in Figma</li>
-                <li>• Enhanced UI/UX with improved information clarity and visual readability</li>
-                <li>• Developed modern, consistent, and user-friendly interface</li>
-              </ul>
             </Card>
 
-            <Card className="p-8 md:p-10 rounded-[2rem] shadow-card hover-float scroll-reveal bg-gradient-to-br from-pastel-mint/10 to-white border-0">
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
-                <div>
-                  <h3 className="text-xl md:text-2xl font-semibold mb-2">Data Analytics - Mini Course</h3>
-                  <p className="text-primary font-medium">RevoU</p>
-                  <p className="text-sm text-muted-foreground">Data Analysis & Visualization</p>
+            <Card className="p-8 md:p-10 rounded-[2rem] shadow-card hover-float slide-in-right bg-gradient-to-br from-pastel-cream/30 to-white border-0 relative overflow-hidden">
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-pastel-pink/20 rounded-full blur-3xl" />
+              <div className="relative z-10">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                  <div>
+                    <span className="inline-block px-4 py-1 bg-pastel-cream/50 rounded-full text-sm font-medium mb-3">📊 Course</span>
+                    <h3 className="text-xl md:text-2xl font-semibold mb-2">Data Analytics</h3>
+                    <p className="text-primary font-medium">RevoU Mini Course</p>
+                    <p className="text-sm text-muted-foreground">Data Analysis & Visualization</p>
+                  </div>
+                  <div className="text-sm md:text-right text-muted-foreground bg-pastel-cream/50 px-4 py-2 rounded-full">
+                    Completed ✓
+                  </div>
                 </div>
-                <div className="text-sm md:text-right text-muted-foreground">
-                  Completed
-                </div>
+                <ul className="space-y-2 text-foreground/80">
+                  <li className="flex items-start gap-2"><span className="text-primary">•</span> Learned data analysis fundamentals and visualization techniques</li>
+                  <li className="flex items-start gap-2"><span className="text-primary">•</span> Applied analytical thinking to real-world business problems</li>
+                  <li className="flex items-start gap-2"><span className="text-primary">•</span> Developed skills in data interpretation and insights presentation</li>
+                </ul>
               </div>
-              <ul className="space-y-2 text-foreground/80">
-                <li>• Learned data analysis fundamentals and visualization techniques</li>
-                <li>• Applied analytical thinking to real-world business problems</li>
-                <li>• Developed skills in data interpretation and insights presentation</li>
-              </ul>
             </Card>
           </div>
         </div>
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-24 px-4 bg-gradient-to-b from-white via-pastel-cream/20 to-white">
+      <section id="projects" className="py-24 px-4 bg-gradient-to-b from-transparent via-pastel-pink/10 to-transparent overflow-hidden">
         <div className="container mx-auto max-w-7xl">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-20 scroll-reveal">
-            📙 Projects
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-6 scroll-reveal section-title">
+            Featured Projects
           </h2>
+          <p className="text-center text-muted-foreground mb-16 scroll-reveal">What I've been working on</p>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-8">
+          <div className="grid md:grid-cols-2 gap-8 mb-8 scroll-reveal-stagger">
             {/* Teraz Co-Living */}
             <Card className="group p-8 rounded-[2rem] shadow-card hover-float scroll-reveal bg-gradient-to-br from-white to-pastel-pink/10 border-0 overflow-hidden relative">
               <div className="absolute top-0 right-0 w-32 h-32 bg-pastel-mint/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
@@ -452,47 +515,57 @@ const Index = () => {
       </section>
 
       {/* Contact Footer */}
-      <footer id="contact" className="py-24 px-4 bg-gradient-to-t from-pastel-pink/20 via-pastel-cream/10 to-transparent">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-12 scroll-reveal">
-            📬 Let's Connect
+      <footer id="contact" className="py-24 px-4 bg-gradient-to-t from-pastel-pink/30 via-pastel-cream/20 to-transparent relative overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-64 h-64 bg-pastel-mint/20 rounded-full blur-3xl animate-floating" />
+        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-pastel-pink/20 rounded-full blur-3xl animate-floating" style={{ animationDelay: "2s" }} />
+        
+        <div className="container mx-auto max-w-4xl text-center relative z-10">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 scroll-reveal section-title">
+            Let's Connect
           </h2>
           
-          <p className="text-lg text-muted-foreground mb-8 scroll-reveal">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+          <p className="text-lg text-muted-foreground mb-12 scroll-reveal max-w-xl mx-auto">
+            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision ✨
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center scroll-reveal">
             <a
               href="mailto:tabinaadeliarafa2004@gmail.com"
-              className="flex items-center gap-3 bg-white px-8 py-4 rounded-full shadow-card hover-float hover-glow transition-all"
+              className="group flex items-center gap-3 bg-white px-8 py-5 rounded-2xl shadow-card hover-float hover-glow transition-all"
             >
-              <Mail className="w-5 h-5 text-primary" />
-              <span className="font-medium">tabinaadeliarafa2004@gmail.com</span>
+              <div className="w-12 h-12 bg-pastel-pink/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Mail className="w-6 h-6 text-primary" />
+              </div>
+              <div className="text-left">
+                <span className="text-xs text-muted-foreground block">Email me at</span>
+                <span className="font-semibold">tabinaadeliarafa2004@gmail.com</span>
+              </div>
             </a>
           </div>
 
-          <div className="flex gap-6 justify-center mt-10 scroll-reveal">
+          <div className="flex gap-6 justify-center mt-12 scroll-reveal-stagger">
             <a
               href="https://github.com/tabinaadeliarafa"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-card hover-float hover-glow transition-all"
+              className="group w-20 h-20 bg-white rounded-2xl flex flex-col items-center justify-center shadow-card skill-badge"
             >
-              <Github className="w-7 h-7" />
+              <Github className="w-8 h-8 mb-1 group-hover:text-primary transition-colors" />
+              <span className="text-xs font-medium text-muted-foreground">GitHub</span>
             </a>
             <a
               href="https://www.linkedin.com/in/tabinaadeliarafa/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-card hover-float hover-glow transition-all"
+              className="group w-20 h-20 bg-white rounded-2xl flex flex-col items-center justify-center shadow-card skill-badge"
             >
-              <Linkedin className="w-7 h-7" />
+              <Linkedin className="w-8 h-8 mb-1 group-hover:text-primary transition-colors" />
+              <span className="text-xs font-medium text-muted-foreground">LinkedIn</span>
             </a>
           </div>
 
-          <div className="mt-12 text-sm text-muted-foreground">
-            <p>© 2024 Tabina Adelia Rafa. Built with ❤️ using React & Tailwind CSS</p>
+          <div className="mt-16 pt-8 border-t border-border/30 text-sm text-muted-foreground">
+            <p>© 2024 Tabina Adelia Rafa • Crafted with ❤️ using React & Tailwind CSS</p>
           </div>
         </div>
       </footer>
