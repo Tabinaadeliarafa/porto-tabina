@@ -219,7 +219,7 @@ All colors MUST be HSL.
   /* Floating animation */
   @keyframes floating {
     0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(2deg); }
+    50% { transform: translateY(-15px) rotate(3deg); }
   }
   
   .animate-floating {
@@ -228,11 +228,33 @@ All colors MUST be HSL.
   
   /* Pulse glow */
   @keyframes pulseGlow {
-    0%, 100% { box-shadow: 0 0 20px rgba(255, 164, 164, 0.3); }
-    50% { box-shadow: 0 0 40px rgba(255, 164, 164, 0.6); }
+    0%, 100% { box-shadow: 0 0 30px rgba(255, 164, 164, 0.4); }
+    50% { box-shadow: 0 0 60px rgba(255, 164, 164, 0.7); }
   }
   
   .pulse-glow {
     animation: pulseGlow 3s ease-in-out infinite;
+  }
+  
+  /* Gentle bounce animation */
+  @keyframes bounceGentle {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-8px); }
+  }
+  
+  .animate-bounce-gentle {
+    animation: bounceGentle 2s ease-in-out infinite;
+  }
+  
+  /* Wave emoji animation */
+  @keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(20deg); }
+    75% { transform: rotate(-15deg); }
+  }
+  
+  .animate-wave {
+    animation: wave 1.5s ease-in-out infinite;
+    transform-origin: 70% 70%;
   }
 }

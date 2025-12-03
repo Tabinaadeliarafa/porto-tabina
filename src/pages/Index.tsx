@@ -100,15 +100,44 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-pastel-pink/20 via-pastel-cream to-pastel-mint/20" />
         
         <div className="relative z-10 text-center max-w-4xl mx-auto">
-          <div className="popup-enter mb-8">
-            <div className="relative inline-block">
-              <img
-                src={profilePhoto}
-                alt="Tabina Adelia Rafa"
-                className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover shadow-float mx-auto border-8 border-white"
-              />
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white px-6 py-2 rounded-full shadow-card">
-                <span className="text-sm font-medium text-foreground">👋 Hello!</span>
+          <div className="popup-enter mb-12">
+            <div className="relative inline-block group">
+              {/* Animated rings */}
+              <div className="absolute inset-0 w-56 h-56 md:w-72 md:h-72 -m-4 rounded-full border-4 border-dashed border-pastel-pink/40 animate-[spin_20s_linear_infinite]" />
+              <div className="absolute inset-0 w-60 h-60 md:w-80 md:h-80 -m-6 md:-m-8 rounded-full border-2 border-dotted border-pastel-mint/30 animate-[spin_30s_linear_infinite_reverse]" />
+              
+              {/* Floating decorative elements */}
+              <div className="absolute -top-6 -right-6 w-8 h-8 bg-gradient-to-br from-pastel-pink to-pastel-rose rounded-full animate-floating shadow-lg" style={{ animationDelay: "0s" }} />
+              <div className="absolute -bottom-4 -left-8 w-6 h-6 bg-gradient-to-br from-pastel-mint to-pastel-cream rounded-full animate-floating shadow-lg" style={{ animationDelay: "1s" }} />
+              <div className="absolute top-1/2 -right-10 w-4 h-4 bg-gradient-to-br from-pastel-rose to-pastel-pink rounded-full animate-floating shadow-lg" style={{ animationDelay: "2s" }} />
+              <div className="absolute -top-2 -left-6 w-5 h-5 bg-gradient-to-br from-pastel-cream to-pastel-mint rounded-full animate-floating shadow-lg" style={{ animationDelay: "0.5s" }} />
+              
+              {/* Glow effect behind photo */}
+              <div className="absolute inset-0 w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-pastel-pink/50 via-pastel-mint/30 to-pastel-rose/50 blur-2xl pulse-glow" />
+              
+              {/* Main photo container */}
+              <div className="relative">
+                <div className="absolute inset-0 w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-pastel-pink via-pastel-mint to-pastel-rose p-1 animate-[spin_8s_linear_infinite]">
+                  <div className="w-full h-full rounded-full bg-pastel-cream" />
+                </div>
+                <img
+                  src={profilePhoto}
+                  alt="Tabina Adelia Rafa"
+                  className="relative w-48 h-48 md:w-64 md:h-64 rounded-full object-cover shadow-float mx-auto border-4 border-white transition-all duration-500 group-hover:scale-105 group-hover:shadow-glow"
+                />
+              </div>
+              
+              {/* Hello badge with bounce */}
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-white px-6 py-3 rounded-full shadow-card animate-bounce-gentle">
+                <span className="text-sm font-semibold text-foreground flex items-center gap-2">
+                  <span className="animate-wave inline-block">👋</span> Hello!
+                </span>
+              </div>
+              
+              {/* Status indicator */}
+              <div className="absolute top-4 right-4 flex items-center gap-2 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-soft">
+                <span className="w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse" />
+                <span className="text-xs font-medium text-foreground">Available</span>
               </div>
             </div>
           </div>
