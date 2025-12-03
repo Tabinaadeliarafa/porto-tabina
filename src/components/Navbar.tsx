@@ -1,4 +1,4 @@
-import { Home, Briefcase, GraduationCap, FolderOpen, Mail } from "lucide-react";
+import { Home, Briefcase, GraduationCap, FolderOpen, Mail, Sparkles } from "lucide-react";
 import { useState } from "react";
 
 interface NavbarProps {
@@ -11,6 +11,7 @@ export const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
 
   const navItems = [
     { id: "home", icon: Home, label: "Home" },
+    { id: "skills", icon: Sparkles, label: "Skills" },
     { id: "organizational", icon: Briefcase, label: "Organization" },
     { id: "educational", icon: GraduationCap, label: "Education" },
     { id: "projects", icon: FolderOpen, label: "Projects" },
