@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Github, Linkedin, Mail, Download, ExternalLink, Code, Palette, Database, BarChart3, Figma, Globe } from "lucide-react";
+import { Github, Linkedin, Mail, Eye, ExternalLink, Code, Palette, Database, BarChart3, Figma, Globe } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.jpg";
 import { Navbar } from "@/components/Navbar";
 
@@ -125,13 +125,15 @@ const Index = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center items-center popup-enter" style={{ animationDelay: "0.4s" }}>
-            <Button 
-              size="lg" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-10 py-6 text-base shadow-soft hover-glow"
+            <a 
+              href="/CV - Tabina Adelia Rafa .pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-10 py-6 text-base shadow-soft hover-glow flex items-center"
             >
-              <Download className="w-5 h-5 mr-2" />
-              Download CV
-            </Button>
+              <Eye className="w-5 h-5 mr-2" />
+              View CV
+            </a>
             <Button
               size="lg"
               variant="outline"
@@ -371,7 +373,7 @@ const Index = () => {
                   <span className="w-2 h-2 bg-pastel-pink rounded-full animate-pulse" />
                   Backend Development
                 </div>
-                <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Teraz Co-Living</h3>
+                <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Arzetta Co-Living</h3>
                 <p className="text-sm text-muted-foreground mb-4 font-medium">Laravel 12 • PostgreSQL • RESTful API</p>
                 
                 <p className="text-foreground/70 mb-6 leading-relaxed line-clamp-4">
@@ -565,7 +567,7 @@ const Index = () => {
           </div>
 
           <div className="mt-16 pt-8 border-t border-border/30 text-sm text-muted-foreground">
-            <p>© 2024 Tabina Adelia Rafa • Crafted with ❤️ using React & Tailwind CSS</p>
+            <p>© 2024 Tabina Adelia Rafa • Informatics Engineering, Padjadjaran University</p>
           </div>
         </div>
       </footer>
