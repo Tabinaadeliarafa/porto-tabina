@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
     /* Pastel Color Palette */
@@ -13,6 +9,9 @@ All colors MUST be HSL.
     --pastel-mint: 174 39% 79%; /* #BADFDB */
     --pastel-cream: 48 71% 96%; /* #FCF9EA */
     --pastel-rose: 0 100% 87%; /* #FFBDBD */
+
+    --title-pink: 0 70% 55%;    /* pink lebih tegas */
+    --title-mint: 174 55% 42%;  /* mint lebih kontras */
     
     --background: 48 71% 96%; /* cream background */
     --foreground: 0 0% 20%; /* dark gray for text */
@@ -210,11 +209,24 @@ All colors MUST be HSL.
   
   /* Section title animation */
   .section-title {
-    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+  background: linear-gradient(
+    135deg,
+    hsl(var(--title-pink)),
+    hsl(var(--title-mint))
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  font-weight: 900;
+  letter-spacing: 0.02em;
+
+  /* glow yang jelas tapi tetap elegan */
+  text-shadow:
+    0 3px 12px rgba(255, 120, 120, 0.45),
+    0 8px 30px rgba(120, 200, 190, 0.35);
+}
+
   
   /* Floating animation */
   @keyframes floating {

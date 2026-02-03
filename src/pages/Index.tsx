@@ -507,7 +507,7 @@ const Index = () => {
                         GitHub
                       </a>
                     </Button>
-                    <a href="https://teraaz.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://arzetta-coliving.up.railway.app" target="_blank" rel="noopener noreferrer">
                       <Button size="sm" variant="outline" className="rounded-full border-2">
                         <ExternalLink className="w-4 h-4 mr-2" />
                         Demo
