@@ -563,15 +563,19 @@ const Index = () => {
                   <p className="text-sm text-muted-foreground mb-4 font-medium">November 2023 - Januari 2024</p>
 
                   <p className="text-foreground/70 mb-6 leading-relaxed text-lg">
-                    Mengembangkan aplikasi mobile untuk membantu pengguna memantau dan meningkatkan kesehatan mental.
-                    Fitur meliputi pelacakan mood, journaling, tips wellness, serta analitik progres.
-                    Dibangun dengan praktik pengembangan modern dengan fokus pada UX dan performa.
+                    Berperan sebagai backend developer yang bertanggung jawab membangun RESTful API 
+                    menggunakan Golang untuk fitur seperti verifikasi email, informasi perangkat, 
+                    dan pelacakan penggunaan. Merancang skema database, mengimplementasikan 
+                    autentikasi pengguna serta manajemen akun, dan mengembangkan fitur manajemen 
+                    grup (CRUD, undangan, pengeditan anggota). Berkontribusi pada analitik AI serta 
+                    integrasi DeepSeek AI untuk menghasilkan insight penggunaan data, dengan seluruh 
+                    fitur berhasil diuji dan dideploy.
                   </p>
 
                   <div className="flex flex-wrap gap-2 mb-6">
-                    <span className="px-4 py-2 bg-background/70 rounded-full text-sm font-medium">Mobile</span>
-                    <span className="px-4 py-2 bg-background/70 rounded-full text-sm font-medium">Kesehatan</span>
-                    <span className="px-4 py-2 bg-background/70 rounded-full text-sm font-medium">Analitik</span>
+                    <span className="px-4 py-2 bg-background/70 rounded-full text-sm font-medium">Backend</span>
+                    <span className="px-4 py-2 bg-background/70 rounded-full text-sm font-medium">REST API</span>
+                    <span className="px-4 py-2 bg-background/70 rounded-full text-sm font-medium">AI Integration</span>
                   </div>
                 </div>
 
