@@ -24,6 +24,7 @@ const skills = [
   { name: "JavaScript", icon: Code, color: "from-pastel-cream to-pastel-mint" },
   { name: "Figma", icon: Figma, color: "from-pastel-pink to-pastel-mint" },
   { name: "Python", icon: Code, color: "from-pastel-mint to-pastel-rose" },
+  { name: "PHP", icon: Code, color: "from-pastel-mint to-pastel-rose" },
   { name: "Analisis Data", icon: BarChart3, color: "from-pastel-rose to-pastel-cream" },
   { name: "Desain UI/UX", icon: Palette, color: "from-pastel-cream to-pastel-pink" },
   { name: "RESTful API", icon: Globe, color: "from-pastel-mint to-pastel-pink" },
@@ -640,7 +641,7 @@ const Index = () => {
             </div>
 
             <div className="mt-16 pt-8 border-t border-border/30 text-sm text-muted-foreground">
-              <p>© 2024 Tabina Adelia Rafa • Teknik Informatika, Universitas Padjadjaran</p>
+              <p>© Tabina Adelia Rafa • Teknik Informatika, Universitas Padjadjaran</p>
             </div>
           </div>
         </footer>
